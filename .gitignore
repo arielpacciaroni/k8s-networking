@@ -2,3 +2,6 @@
 
 microservice-auth/dist/**/*
 !microservice-auth/dist/.gitkeep
+
+terraform/**/*
+!terraform/**/*.tf
