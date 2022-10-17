@@ -20,7 +20,7 @@ spec:
 
     spec:
       containers:
-        - name: auth-app
+        - name: frontend-app
           image: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-frontend:latest
           imagePullPolicy: Always
           ports:
