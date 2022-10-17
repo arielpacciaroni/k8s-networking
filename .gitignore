@@ -1,0 +1,4 @@
+**/node_modules
+
+microservice-auth/dist/**/*
+!microservice-auth/dist/.gitkeep
