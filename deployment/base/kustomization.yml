@@ -3,3 +3,7 @@ kind: Kustomization
 resources:
 - microservice-auth-deployment.yml
 - microservice-auth-service.yml
+images:
+- name: 091733698341.dkr.ecr.us-east-1.amazonaws.com/k8s-argocd
+  newName: 091733698341.dkr.ecr.us-east-1.amazonaws.com/k8s-argocd
+  newTag: 805feafdcbf098c2914e7f5759295cc71dd64cd6
