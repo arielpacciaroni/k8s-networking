@@ -8,7 +8,7 @@ resources:
 images:
 - name: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-auth
   newName: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-auth
-  newTag: 36da3d203057b866a0484f4c2db80c20c4a15ed4
+  newTag: 420fd7331176ab20b1974fb3a8a37e490dd24863
 - name: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-frontend
   newName: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-frontend
-  newTag: 36da3d203057b866a0484f4c2db80c20c4a15ed4
+  newTag: 420fd7331176ab20b1974fb3a8a37e490dd24863
