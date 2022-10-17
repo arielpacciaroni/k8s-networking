@@ -65,7 +65,7 @@ jobs:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: microservice-frontend
       run: |
-        cd microservice-auth
+        cd microservice-frontend
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
 
