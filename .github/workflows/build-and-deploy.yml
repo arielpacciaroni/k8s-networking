@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  workflow_run:
+    workflows: ['Terraform Apply']
+    types:
+      - completed
 
 jobs:
   build:
@@ -29,6 +33,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: microservice-auth
+      working_dir: microservice-auth
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
