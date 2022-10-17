@@ -6,4 +6,4 @@ resources:
 images:
 - name: 091733698341.dkr.ecr.us-east-1.amazonaws.com/k8s-argocd
   newName: 091733698341.dkr.ecr.us-east-1.amazonaws.com/k8s-argocd
-  newTag: 805feafdcbf098c2914e7f5759295cc71dd64cd6
+  newTag: 1a934d1cabca657d9666e38d1ba30ad50ad9097c
