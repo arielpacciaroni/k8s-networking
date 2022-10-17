@@ -71,7 +71,7 @@ jobs:
       run: |
        cd deployment/base
        kustomize edit set image $ECR_REGISTRY/$ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
-       cat kustomization.yaml
+       cat kustomization.yml
         
     - name: Commit files
       run: |
