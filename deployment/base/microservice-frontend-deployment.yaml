@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: frontend-deployment
+  labels:
+    app.kubernetes.io/name: frontend-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: frontend
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: frontend
+
+    spec:
+      containers:
+        - name: auth-app
+          image: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+              requests:
+                memory: "128Mi"
+                cpu: "250m"
+              limits:
+                memory: "512Mi"
+                cpu: "1000m"
+      imagePullSecrets:
+        - name: us-east-1-ecr-registry

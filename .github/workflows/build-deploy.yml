@@ -33,7 +33,7 @@ jobs:
 
   build:
     needs: terraform_apply
-    name: Build Image
+    name: Build Images
     runs-on: ubuntu-latest
 
     steps:
@@ -51,10 +51,19 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build, tag, and push image to Amazon ECR
+    - name: (Auth microservice) Build, tag, and push image to AWS
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: microservice-auth
+      run: |
+        cd microservice-auth
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
+
+    - name: (Frontend microservice) Build, tag, and push image to AWS
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: microservice-frontend
       run: |
         cd microservice-auth
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA .
@@ -89,10 +98,12 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: microservice-auth
+        ECR_AUTH_REPOSITORY: microservice-auth
+        ECR_FRONTEND_REPOSITORY: microservice-frontend
       run: |
        cd deployment/base
-       kustomize edit set image $ECR_REGISTRY/$ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:$GITHUB_SHA
+       kustomize edit set image $ECR_REGISTRY/$ECR_AUTH_REPOSITORY=$ECR_REGISTRY/$ECR_AUTH_REPOSITORY:$GITHUB_SHA
+       kustomize edit set image $ECR_REGISTRY/$ECR_FRONTEND_REPOSITORY=$ECR_REGISTRY/$ECR_FRONTEND_REPOSITORY:$GITHUB_SHA
        cat kustomization.yaml
         
     - name: Commit files

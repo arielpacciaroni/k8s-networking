@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
 - microservice-auth-deployment.yaml
 - microservice-auth-service.yaml
+- microservice-frontend-deployment.yaml
+- microservice-frontend-service.yaml
 images:
 - name: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-auth
   newName: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-auth

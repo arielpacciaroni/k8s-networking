@@ -1,4 +1,5 @@
 **/node_modules
+**/.next
 
 microservice-auth/dist/**/*
 !microservice-auth/dist/.gitkeep
