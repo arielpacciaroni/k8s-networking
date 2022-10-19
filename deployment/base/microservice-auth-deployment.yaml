@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/name: auth-deployment
 
 spec:
-  replicas: 1
+  replicas: 2
 
   selector:
     matchLabels:
@@ -32,5 +32,17 @@ spec:
               limits:
                 memory: "512Mi"
                 cpu: "500m"
+
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+            matchExpressions:
+            - key: app.kubernetes.io/name
+              operator: In
+              values:
+              - auth
+            topologyKey: "kubernetes.io/hostname"
+
       imagePullSecrets:
         - name: us-east-1-ecr-registry

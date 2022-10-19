@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+
+html, body {
+	@apply bg-neutral-100 text-neutral-600;
+}
+
+@tailwind utilities;

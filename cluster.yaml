@@ -1,0 +1,24 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: aurora
+  region: eu-west-1
+  version: '1.23'
+
+nodeGroups:
+  - name: ng-1
+    instanceType: m3.large
+    minSize: 1
+    maxSize: 3
+    desiredCapacity: 2
+    volumeSize: 80
+    ssh:
+      allow: false
+    iam:
+      withAddonPolicies:
+        externalDNS: true
+
+addons:
+- name: vpc-cni
+  version: '1.11.4-eksbuild.1'
