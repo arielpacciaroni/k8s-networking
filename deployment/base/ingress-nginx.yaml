@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  tls:
+  - hosts:
+    - pauconu.com
+    secretName: tls-secret
+  rules:
+  - host: pauconu.com
+    http:
+      paths:
+        - path: /api
+          backend:
+            serviceName: auth-service
+            servicePort: 3003
+        - path: /
+          backend:
+            serviceName: frontend-service
+            servicePort: 3000
