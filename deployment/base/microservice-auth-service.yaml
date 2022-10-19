@@ -9,7 +9,7 @@ metadata:
 spec:
   selector:
     app: auth
-  type: NodePort
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 3003
