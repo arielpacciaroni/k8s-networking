@@ -11,14 +11,25 @@ spec:
 
   selector:
     matchLabels:
-      app.kubernetes.io/name: auth
+      app: auth
 
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: auth
+        app: auth
 
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - auth
+            topologyKey: "kubernetes.io/hostname"
+
       containers:
         - name: auth-app
           image: 091733698341.dkr.ecr.us-east-1.amazonaws.com/microservice-auth:latest
@@ -32,12 +43,6 @@ spec:
               limits:
                 memory: "512Mi"
                 cpu: "500m"
-
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            matchLabels:
-              app.kubernetes.io/name: auth
 
       imagePullSecrets:
         - name: us-east-1-ecr-registry
