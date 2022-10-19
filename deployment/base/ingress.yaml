@@ -11,7 +11,8 @@ spec:
   - host: api.pauconu.com
     http:
       paths:
-        - path: /*
+        - path: /
+          pathType: Prefix
           backend:
             service:
               name: "auth-service"
@@ -20,7 +21,8 @@ spec:
   - host: pauconu.com
     http:
       paths:
-        - path: /*
+        - path: /
+          pathType: Prefix
           backend:
             service:
               name: "frontend-service"
