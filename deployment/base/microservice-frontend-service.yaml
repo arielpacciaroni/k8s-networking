@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: frontend-service
   labels:
+    name: frontend-service
     app.kubernetes.io/name: frontend-service
 spec:
   selector:
