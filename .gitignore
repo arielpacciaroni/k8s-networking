@@ -1,10 +1,9 @@
 **/node_modules
 **/.next
 
+deployment/base/external-dns.yaml
 microservice-auth/dist/**/*
 !microservice-auth/dist/.gitkeep
-
-keys
 
 terraform/**/*
 !terraform/**/*.tf
