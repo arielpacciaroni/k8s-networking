@@ -5,6 +5,7 @@ metadata:
   labels:
     name: auth-service
     app.kubernetes.io/name: auth-service
+    external-dns.alpha.kubernetes.io/hostname: api.pauconu.com
 spec:
   selector:
     app: auth
