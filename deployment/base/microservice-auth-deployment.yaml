@@ -36,13 +36,8 @@ spec:
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-            matchExpressions:
-            - key: app.kubernetes.io/name
-              operator: In
-              values:
-              - auth
-            topologyKey: "kubernetes.io/hostname"
+            matchLabels:
+              app.kubernetes.io/name: auth
 
       imagePullSecrets:
         - name: us-east-1-ecr-registry
