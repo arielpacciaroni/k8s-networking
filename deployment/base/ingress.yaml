@@ -5,6 +5,8 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP": 80}]'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-1:091733698341:certificate/8e052924-a06d-4d5c-8bb2-64d419778b87
     external-dns.alpha.kubernetes.io/hostname: pauconu.com
 spec:
   ingressClassName: alb
