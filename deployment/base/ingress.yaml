@@ -19,3 +19,13 @@ spec:
               name: "frontend-service"
               port:
                 number: 3000
+  - host: api.pauconu.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: "auth-service"
+              port:
+                number: 3003
