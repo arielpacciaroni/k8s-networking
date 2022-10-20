@@ -5,12 +5,10 @@ import clsx from 'clsx';
 
 export default function Index() {
 	const { isLoading, error, data } = useQuery(['healthCheck'], async() => {
-		const { data } = await axios.get('http://localhost:3003/healthcheck');
+		const { data } = await axios.get('https://api.pauconu.com/healthcheck');
 
 		return { data }
-	}, {
-		initialData: () => ({})
-	})
+	});
 
 	const pointConnectionClassname = useMemo(() => {
 		if(isLoading) return 'bg-yellow-500';
